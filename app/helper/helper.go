@@ -1,9 +1,15 @@
 package helper
 
 import (
+	"bufio"
+	"errors"
 	"fmt"
+	"math"
+	"os"
 	"regexp"
+	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 const empty string = ""
@@ -11,6 +17,66 @@ const replacement string = "Input integer number"
 
 func ArrayToString(a []int, delim string) string {
 	return strings.Trim(strings.ReplaceAll(fmt.Sprint(a), " ", delim), "[]")
+}
+
+func GetUserInputInt(prompt string) (bool, int64) {
+
+	line := GetUserInput([]string{prompt})
+
+	if len(line) > 0 {
+
+		value, error := strconv.ParseInt(line[0], 10, 64)
+
+		if error != nil {
+			fmt.Println("Error occurred:", error)
+			return false, math.MinInt
+		}
+
+		return true, value
+	}
+
+	return false, math.MinInt
+}
+
+func GetUserInputString(prompt string) (bool, string) {
+
+	line := GetUserInput([]string{prompt})
+
+	if len(line) > 0 {
+
+		value := line[0]
+
+		if utf8.RuneCountInString(value) == 0 {
+			fmt.Println("Error occurred:", errors.New("invalid string"))
+			return false, ""
+		}
+
+		return true, value
+	}
+
+	return false, ""
+}
+
+func GetUserInput(prompt []string) []string {
+
+	size := len(prompt)
+	reader := bufio.NewReader(os.Stdin)
+	result := make([]string, size)
+
+	for i := range size {
+
+		line := prompt[i]
+
+		fmt.Println(line)
+
+		input, _ := reader.ReadString('\n')
+
+		input = strings.TrimSpace(input)
+
+		result[i] = input
+	}
+
+	return result
 }
 
 func GetIntValue(message string) int {
