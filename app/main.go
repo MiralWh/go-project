@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	//"go-project/app/tasks"
-	"go-project/app/works"
+	"go-project/app/tasks"
 )
 
 func main() {
@@ -13,7 +13,9 @@ func main() {
 	//tasks.Task1()
 
 	//works.Work1()
-	works.Work2()
+	//works.Work2()
+
+	tasks.Task4()
 
 	fmt.Scanln()
 }
