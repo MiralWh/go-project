@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Main from src",
+            "name": "Launch main from app",
             "type": "go",
             "request": "launch",
             "mode": "debug",
