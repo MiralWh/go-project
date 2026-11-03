@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	"go-project/app/works"
 	//"go-project/app/tasks"
-	"go-project/app/tasks"
 )
 
 func main() {
@@ -11,11 +11,15 @@ func main() {
 	fmt.Println("Добро пожаловать на задания по языку \"Go\"")
 
 	//tasks.Task1()
+	//tasks.Task4()
 
 	//works.Work1()
 	//works.Work2()
-
-	tasks.Task4()
+	//works.Work3()
+	//works.Work4()
+	//works.Work5()
+	//works.Work6()
+	works.Work7()
 
 	fmt.Scanln()
 }

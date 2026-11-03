@@ -8,9 +8,9 @@ import (
 
 func Work2() {
 
-	fmt.Println("Добро пожаловать на 2-e задания по языку \"Go\"")
+	fmt.Println("Добро пожаловать на 2-e задание по языку \"Go\"")
 
-	flag, task := helper.GetUserInputInt("Ввведите номер задания 1 - 4")
+	flag, task := helper.GetUserInputInt("Ввведите номер задачи 1 - 4")
 
 	if flag {
 
@@ -92,7 +92,7 @@ func Work2() {
 			}
 
 		default:
-			fmt.Println("Неизвестное задание")
+			fmt.Println("Неизвестная задача")
 		}
 	}
 }
