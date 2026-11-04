@@ -67,67 +67,6 @@ func collectFiles(dir string) ([]string, error) {
 	return files, nil
 }
 
-// func combine(files []string, outPath string) (written int, err error) {
-// 	out, err := os.Create(outPath)
-// 	if err != nil {
-// 		return 0, fmt.Errorf("создать %s: %w", outPath, err)
-// 	}
-
-// 	defer func() {
-// 		if cerr := out.Close(); err == nil && cerr != nil {
-// 			err = fmt.Errorf("закрыть %s: %w", outPath, cerr)
-// 		}
-// 	}()
-
-// 	w := bufio.NewWriter(out)
-
-// 	for _, name := range files {
-
-// 		if filepath.Clean(name) == outPath {
-// 			continue
-// 		}
-// 		if !isTextFile(name) {
-// 			fmt.Fprintf(os.Stderr, "пропуск (не текстовый): %s\n", name)
-// 			continue
-// 		}
-
-// 		f, err := os.Open(name)
-// 		if err != nil {
-// 			fmt.Fprintf(os.Stderr, "пропуск %s: %v\n", name, err)
-// 			continue
-// 		}
-
-// 		if _, err := fmt.Fprintf(w, "=== %s ===\n", name); err != nil {
-// 			f.Close()
-// 			return written, fmt.Errorf("запись заголовка: %w", err)
-// 		}
-
-// 		if _, err := io.Copy(w, f); err != nil {
-// 			f.Close()
-// 			return written, fmt.Errorf("копирование %s: %w", name, err)
-// 		}
-// 		fmt.Fprintln(w)
-
-// 		if err := w.Flush(); err != nil {
-// 			return written, fmt.Errorf("flush: %w", err)
-// 		}
-
-// 		f.Close()
-
-// 		written++
-// 	}
-
-// 	// if err := w.Flush(); err != nil {
-// 	// 	return written, fmt.Errorf("flush: %w", err)
-// 	// }
-
-// 	return written, nil
-// }
-
-// combine пишет содержимое files в outPath.
-// Возвращает количество успешно обработанных файлов.
-// Нетекстовые и нечитаемые файлы пропускаются с предупреждением в stderr.
-
 func combine(files []string, outPath string) (written int, err error) {
 	out, err := os.Create(outPath)
 	if err != nil {
