@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"path/filepath"
 	"regexp"
+	"runtime"
 	"strconv"
 	"strings"
 	"unicode/utf8"
@@ -14,6 +16,24 @@ import (
 
 const empty string = ""
 const replacement string = "Input integer number"
+
+func GetRootPathCombine(append string) string {
+	_, file, _, ok := runtime.Caller(1)
+	if !ok {
+		return ""
+	}
+
+	str, err := filepath.Abs(file)
+	if err != nil {
+		return ""
+	}
+
+	index := strings.Index(str, "\\app")
+	remove := str[index:]
+
+	result := strings.ReplaceAll(str, remove, append)
+	return result
+}
 
 func ArrayToString(a []int, delim string) string {
 	return strings.Trim(strings.ReplaceAll(fmt.Sprint(a), " ", delim), "[]")
