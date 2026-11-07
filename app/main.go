@@ -20,7 +20,8 @@ func main() {
 	//works.Work5()
 	//works.Work6()
 	//works.Work7()
-	works.Work8()
+	//works.Work8()
+	works.Work9()
 
 	fmt.Scanln()
 }

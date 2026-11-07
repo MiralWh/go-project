@@ -109,9 +109,11 @@ fmt.Println(sumAll(10, -2, 4, 7)) // 19`
 	}
 }
 
+var ErrorDividedByZero = errors.New("ошибка деления на ноль")
+
 func divide(a, b float64) (float64, error) {
 	if b == 0 {
-		return 0, errors.New("деление на ноль невозможно")
+		return 0, ErrorDividedByZero
 	}
 	return a / b, nil
 }
